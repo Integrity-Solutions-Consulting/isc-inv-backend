@@ -6,8 +6,8 @@ services:
     container_name: backend-postgres
     restart: always
     environment:
-      POSTGRES_USER: inventory
-      POSTGRES_PASSWORD: Zp15#kV42wLp@yR6m
+      POSTGRES_USER: isc-user-dev
+      POSTGRES_PASSWORD: isc-user-pass
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
