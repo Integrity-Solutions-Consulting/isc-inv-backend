@@ -31,7 +31,7 @@ public interface EquipmentCategoryRepository extends JpaRepository<EquipmentCate
     @Query("SELECT c FROM EquipmentCategoryEntity c LEFT JOIN FETCH c.stock WHERE c.id = :id")
     Optional<EquipmentCategoryEntity> findByIdWithStock(@Param("id") Integer id);
     
-    @Query(value = "SELECT * FROM get_equipment_by_category()", nativeQuery = true)
+    @Query(value = "SELECT * FROM inventory.get_equipment_by_category()", nativeQuery = true)
 	List<Object[]> getEquipmentByCategory();
        
 }
