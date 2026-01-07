@@ -27,6 +27,6 @@ public interface InvoiceRepository extends JpaRepository<InvoiceEntity, Integer>
     @Query("UPDATE InvoiceEntity u SET u.status = true, u.modificationDate = CURRENT_TIMESTAMP WHERE u.id = :id AND u.status = false")
     int active(@Param("id") Integer id);
     
-    @Query(value = "SELECT * FROM get_asset_acquisition_trends(:yearParam)", nativeQuery = true)
+    @Query(value = "SELECT * FROM inventory.get_asset_acquisition_trends(:yearParam)", nativeQuery = true)
     List<Object[]> getAssetAcquisitionTrends(@Param("yearParam") Integer yearParam);
 }
