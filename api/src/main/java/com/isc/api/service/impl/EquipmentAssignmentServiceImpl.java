@@ -113,6 +113,9 @@ public class EquipmentAssignmentServiceImpl implements EquipmentAssignmentServic
         EquipmentAssignmentEntity entity = new EquipmentAssignmentEntity();
         entity.setEmployee(employeeOpt.get());
         entity.setEquipment(equipment);
+        if (request.getAssigmentDate().isAfter(LocalDate.now())) {
+        	throw new RuntimeException("La fecha de asignacion no puede ser mayor a la fecha actual");
+        }
         entity.setAssignmentDate(request.getAssigmentDate());
 
         EquipmentAssignmentEntity saved = assignmentRepository.save(entity);
