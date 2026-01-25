@@ -74,10 +74,9 @@ public class SecurityConfig {
 	@Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:4200", serverUrl,"https://api.timereport.integritysolutions.com.ec", "https://app.timereport.integritysolutions.com.ec","https://app.inventory.integritysolutions.com.ec","http://147.93.181.146:7070"));
+        configuration.setAllowedOriginPatterns(List.of("*")); // 👈 wildcard válido
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
-
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
