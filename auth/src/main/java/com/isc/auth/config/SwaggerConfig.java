@@ -28,7 +28,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 @SecurityScheme(
 		name="SecurityToken",
 		description = "Acces Token for my API",
-		type = SecuritySchemeType.HTTP,
+		type = SecuritySchemeType.HTTPS,
 		paramName = HttpHeaders.AUTHORIZATION,
 		in = SecuritySchemeIn.HEADER,
 		scheme = "bearer",

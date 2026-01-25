@@ -113,9 +113,10 @@ public class SecurityConfig {
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOrigins(List.of("http://localhost:4200", serverUrl,testServerUrl,"https://api.timereport.integritysolutions.com.ec","https://app.timereport.integritysolutions.com.ec", "http://147.93.181.146:7070"));
+		configuration.setAllowedOrigins(List.of("*"));
 		configuration.addAllowedHeader("*");
 		configuration.addAllowedMethod("*");
+		configuration.setAllowCredentials(true); // Permite el manejo de tokens/cookies
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
