@@ -101,7 +101,7 @@ public class EmailServiceImpl implements EmailService {
 	                + "        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8ZCctTKfGFdHZHIYBnQqcSkHUvs9khINITA&s' alt='Logo de la compañía' class='logo'>"
 	                + "        <div class='title'>¡Tu cuenta ha sido creada!</div>"
 	                + "        <div class='subtitle'>Integrity Solutions te da la bienvenida a la plataforma InventorySoft.</div>"
-	                + "        <div class='subtitle'>https://app.inventory.integritysolutions.com.ec</div>"
+	                + "        <div class='subtitle'>https://inv.integritysolutions.com.ec/</div>"
 	                + "        <p>Tu contraseña generada es:</p>"
 	                + "        <div class='password-box'>" + password + "</div>"
 	                + "        <p>Inicia sesión con tu correo y esta contraseña.</p>"
