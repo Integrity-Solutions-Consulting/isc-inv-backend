@@ -87,7 +87,7 @@ public class SecurityConfig {
 							"/v3/api-docs/**",
 							"/swagger-ui.html",
 							"/swagger-ui/**").permitAll();
-					//req.anyRequest().authenticated();
+					req.anyRequest().authenticated();
 				}).sessionManagement(session -> {
 					session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 					session.maximumSessions(1).sessionRegistry(registry());
