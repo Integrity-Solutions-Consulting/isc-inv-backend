@@ -3,6 +3,9 @@ package com.isc.auth.exception;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
@@ -115,7 +118,11 @@ public class ControllerAdvice {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity<ErrorResponseDto> handleGeneralException(Exception ex) {
+    public ResponseEntity<ErrorResponseDto> handleGeneralException(Exception ex) throws Exception {
+        // Dejar que Spring Security maneje sus propias excepciones
+        if (ex instanceof AccessDeniedException || ex instanceof AuthenticationException) {
+            throw ex;
+        }
         ErrorResponseDto error = new ErrorResponseDto();
         error.setCause(ex.getClass().getName());
         error.setMessage("Ha ocurrido un error inesperado.");
@@ -127,6 +134,10 @@ public class ControllerAdvice {
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<ErrorResponseDto> handleRuntimeException(RuntimeException ex) {
+        // Dejar que Spring Security maneje sus propias excepciones
+        if (ex instanceof AccessDeniedException) {
+            throw (AccessDeniedException) ex;
+        }
         ErrorResponseDto error = new ErrorResponseDto();
         error.setCause(ex.getClass().getName());
         error.setMessage(ex.getMessage() != null ? ex.getMessage() : "Error en tiempo de ejecución.");
